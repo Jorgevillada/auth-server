@@ -1,0 +1,26 @@
+{
+    "coverageReporters": [
+        "html"
+    ],
+    "testURL": "http://localhost",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+        "src/**/*",
+        "!src/types/**"
+    ],
+    "transform": {
+        "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+        "ts-jest": {
+            "tsConfigFile": "tsconfig.json"
+        }
+    },
+    "moduleFileExtensions": [
+        "ts",
+        "js"
+    ],
+    "testMatch": [
+        "<rootDir>/src/**/*.test.+(ts|js)"
+    ]
+}
