@@ -1,4 +1,4 @@
-import { createLogger, Logger as LoggerType, transports } from "winston";
+import { createLogger, Logger as LoggerType, transports, format } from "winston";
 
 export class Logger {
 
@@ -6,16 +6,18 @@ export class Logger {
         Logger.logger.log(level, message, meta);
     }
     public static info(message: string, ...meta: any[]) {
-        Logger.logger.log("info", message, meta);
+        Logger.logger.info(message, meta);
     }
     public static debug(message: string, ...meta: any[]) {
-        Logger.logger.log("debug", message, meta);
+        Logger.logger.debug(message, meta);
     }
     public static error(message: string, ...meta: any[]) {
-        Logger.logger.log("error", message, meta);
+        Logger.logger.error(message, meta);
     }
 
     private static logger: LoggerType = createLogger({
+        format: format.simple(),
+        level: "debug",
         transports: [
             new transports.Console(),
         ],
