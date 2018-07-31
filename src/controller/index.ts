@@ -1,7 +1,9 @@
 import * as express from "express";
+import { ValidationService } from "../service/validate-token";
 import { Constants } from "../util/constants";
 import { MessageHelper } from "../util/message_helper";
 import { Validation } from "../util/validation";
+
 
 const IndexController = express.Router();
 
@@ -25,7 +27,9 @@ IndexController.get("/", async (req, res) => {
     Validation.nonEmpty(userId,
       MessageHelper.createMessage(Constants.CODE_INVALID_AUTH_HEADER, "missing " + Constants.HEADER_USER),
     );
-
+    if (!ValidationService.validateToken(authToken, storeId, userId)) {
+      throw MessageHelper.createMessage(Constants.CODE_INVALID_AUTH_HEADER, "invalid token ");
+    }
     res.sendStatus(Constants.STATUS_OK);
   } catch (error) {
     res.status(error.status || Constants.STATUS_MISSING_INFO);
