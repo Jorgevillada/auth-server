@@ -1,7 +1,8 @@
 import { Constants } from "../util/constants";
+import { Logger } from "../util/logger";
 import { Validation } from "../util/validation";
 import { PropertyService } from "./property";
-import { Logger } from "../util/logger";
+
 
 export class ValidationService {
 

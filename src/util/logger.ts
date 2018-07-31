@@ -1,4 +1,4 @@
-import { createLogger, Logger as LoggerType, transports, format } from "winston";
+import { createLogger, format, Logger as LoggerType, transports } from "winston";
 
 export class Logger {
 

@@ -29,7 +29,7 @@ IndexController.get("/", async (req, res) => {
       MessageHelper.createMessage(Constants.CODE_INVALID_AUTH_HEADER, "missing " + Constants.HEADER_USER),
     );
     if (!(await ValidationService.validateToken(authToken, storeId, userId))) {
-      Logger.debug("invalid token", authToken, storeId, userId, ValidationService.validateToken(authToken, storeId, userId));
+      Logger.debug("invalid token", authToken, storeId, userId);
       throw MessageHelper.createMessage(Constants.CODE_INVALID_AUTH_HEADER, "invalid token ");
     }
     res.sendStatus(Constants.STATUS_OK);
